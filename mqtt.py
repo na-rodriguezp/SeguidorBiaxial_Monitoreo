@@ -3,7 +3,7 @@ import time
 import random
 
 MQTT_BROKER = ""
-MQTT_PORT = 1883
+MQTT_PORT = 8081
 
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
