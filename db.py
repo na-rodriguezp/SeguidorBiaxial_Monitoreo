@@ -46,7 +46,7 @@ def init_session():
     username = os.environ.get('POSTGRES_USER', 'postgres')
     password = os.environ.get('POSTGRES_PASSWORD', 'postgres')
     host = os.environ.get('POSTGRES_HOST', 'localhost')
-    port = os.environ.get('POSTGRES_PORT', '8082')
+    port = os.environ.get('POSTGRES_PORT', '5432')
     database = os.environ.get('POSTGRES_DB', 'postgres')
     username = 'biaxialmonitoring'
     password = 'IOT2023!'
@@ -64,7 +64,7 @@ if __name__ == '__main__':
     username = os.environ.get('POSTGRES_USER', 'postgres')
     password = os.environ.get('POSTGRES_PASSWORD', 'postgres')
     host = os.environ.get('POSTGRES_HOST', 'localhost')
-    port = os.environ.get('POSTGRES_PORT', '8082')
+    port = os.environ.get('POSTGRES_PORT', '5432')
     database = os.environ.get('POSTGRES_DB', 'postgres')
     username = 'biaxialmonitoring'
     password = 'IOT2023!'
