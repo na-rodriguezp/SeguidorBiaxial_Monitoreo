@@ -3,7 +3,7 @@ import db_utils as utils
 import random
 import json
 
-BROKER = "localhost"
+BROKER = "157.253.227.145"
 PORT = 8081
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 username = "biaxial"
