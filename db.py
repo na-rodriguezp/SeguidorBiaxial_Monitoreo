@@ -51,6 +51,7 @@ def init_session():
     username = 'biaxialmonitoring'
     password = 'IOT2023!'
     database = 'solarbiaxialmonitoring'
+    host = '172.24.100.205'
 
     # Connect to the database
     engine = connect_database(username, password, host, port, database)
@@ -69,6 +70,7 @@ if __name__ == '__main__':
     username = 'biaxialmonitoring'
     password = 'IOT2023!'
     database = 'solarbiaxialmonitoring'
+    host = '172.24.100.205'
 
     # Connect to the database
     engine = connect_database(username, password, host, port, database)
