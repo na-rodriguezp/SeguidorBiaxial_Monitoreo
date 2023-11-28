@@ -3,6 +3,7 @@ import paho.mqtt.client as paho
 import random
 import json, dataclasses
 import time
+from mqtt import connect_mqtt
 
 trackers = ["seguidor1", "seguidor2", "seguidor3", "seguidor4"]
 device_ports = [1,2,3,4]
@@ -13,12 +14,6 @@ to_send_values = {}
 # Configura los parámetros
 BROKER = "172.24.100.204"
 port = 8081
-username = ""
-password = ""
-
-client1 = paho.Client("raspberry")
-client1.connect(BROKER, port)
-print("Connected to MQTT Broker")
 
 def build_topics():
     for i in range(len(trackers)):
@@ -57,7 +52,20 @@ def send_variables(client):
     #MIRAR SI SE PUEDE HACER MAS REALISTA MIRANDO LA HORA DEL DIA PARA ESTIMAR LAS VARIABLES.
     while True:
         client.publish(topics[random.randint(0,len(topics-1))], json.dumps(to_send_values, cls=JSONEncoder))
-        time.sleep(250)
+        print("New variables sent")
+        time.sleep(60)      #POSIBLE PUNTO DE ESTANCAMIENTO!!!!!!!!!!!!!!!!
+
+def main():
+    mqtt_client = connect_mqtt(
+        BROKER,
+        port,
+        client_id = "raspberry",
+        username="",
+        password=""
+    )
+    build_topics()
+    assign_variables()
+    send_variables(mqtt_client)
 
 # Publica el mensaje
 #publish.single(topic, message, hostname=broker_address, auth={'username': username, 'password': password})
