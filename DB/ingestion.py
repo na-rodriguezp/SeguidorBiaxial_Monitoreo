@@ -1,4 +1,4 @@
-from mqtt import connect_mqtt
+from mqtt_connection import connect_mqtt
 import db_utils as utils
 import random
 import json

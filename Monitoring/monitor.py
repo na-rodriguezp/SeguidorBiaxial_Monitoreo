@@ -3,7 +3,7 @@ import paho.mqtt.client as paho
 import random
 import json, dataclasses
 import time
-from mqtt import connect_mqtt
+from mqtt_connection import connect_mqtt
 
 trackers = ["seguidor1", "seguidor2", "seguidor3", "seguidor4"]
 device_ports = [1,2,3,4]
