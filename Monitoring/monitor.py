@@ -51,7 +51,11 @@ def assign_variables():
 def send_variables(client):
     #MIRAR SI SE PUEDE HACER MAS REALISTA MIRANDO LA HORA DEL DIA PARA ESTIMAR LAS VARIABLES.
     while True:
-        client.publish(topics[random.randint(0,len(topics)-1)], json.dumps(to_send_values, cls=JSONEncoder))
+        random.shuffle(topics)
+        print("The first topic in the list is " + topics[0])
+        for topic in topics:
+            assign_variables()
+            client.publish(topic, json.dumps(to_send_values, cls=JSONEncoder))
         print("New variables sent")
         time.sleep(60)      #POSIBLE PUNTO DE ESTANCAMIENTO!!!!!!!!!!!!!!!!
 
@@ -64,7 +68,6 @@ def main():
         password=""
     )
     build_topics()
-    assign_variables()
     send_variables(mqtt_client)
 
 
