@@ -8,7 +8,7 @@ from mqtt_connection import connect_mqtt
 trackers = ["seguidor1", "seguidor2", "seguidor3", "seguidor4"]
 device_ports = [1,2,3,4]
 topics = []
-variable_names = ["Irradiancia", "Temperatura ambiente", "Voltaje panel", "Corriente panel", "Angulo elevacion", "Angulo acimutal", "Voltaje motor", "Corriente motor"]
+variable_names = ["Irradiancia", "Temperatura ambiente", "Voltaje panel", "Corriente panel", "Potencia panel", "Angulo elevacion", "Angulo acimutal", "Voltaje motores", "Corriente motores", "Potencia motores"]
 to_send_values = {}
 
 # Configura los parámetros
@@ -37,12 +37,14 @@ def assign_variables():
     tempr = random.randint(-10,70)
     volt_panel = random.randint(0,25)
     corr_panel = random.randint(0,5)
+    pot_panel = volt_panel*corr_panel
     ang_elev = random.randint(0,90)
     ang_acimut = random.randint(0,360)
-    volt_motor = random.randint(0,24)
-    corr_motor = random.randint(0,3)
+    volt_motores = random.randint(0,24)
+    corr_motores = random.randint(0,3)
+    pot_motores = volt_motores*corr_motores
     
-    var_values = [irradiancia, tempr, volt_panel, corr_panel, ang_elev, ang_acimut, volt_motor, corr_motor]
+    var_values = [irradiancia, tempr, volt_panel, corr_panel, pot_panel, ang_elev, ang_acimut, volt_motores, corr_motores, pot_motores]
 
     for i in range (len(variable_names)):
         to_send_values[variable_names[i]] = var_values[i]
