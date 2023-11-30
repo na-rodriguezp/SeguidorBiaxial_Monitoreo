@@ -13,25 +13,25 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/units", response_model=list[UnitSchema])
-async def get_units(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    units = queries.get_units(db, skip, limit)
-    return units
-
-@router.get("/stringmaps", response_model=list[StringMapSchema])
-async def get_stringmaps(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    stringmaps = queries.get_stringmaps(db, skip, limit)
-    return stringmaps
-
 @router.get("/measurements", response_model=list[MeasurementSchema])
 async def get_measurements(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     measurements = queries.get_measurements(db, skip, limit)
     return measurements
 
+@router.get("/units", response_model=list[UnitSchema])
+async def get_units(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    units = queries.get_units(db, skip, limit)
+    return units
+
 @router.get("/devices", response_model=list[DeviceSchema])
 async def get_devices(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     devices = queries.get_devices(db, skip, limit)
     return devices
+
+@router.get("/stringmaps", response_model=list[StringMapSchema])
+async def get_stringmaps(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    stringmaps = queries.get_stringmaps(db, skip, limit)
+    return stringmaps
 
 @router.get("/values", response_model=list[ValueSchema])
 async def get_values(request: Request, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):

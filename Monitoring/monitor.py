@@ -11,7 +11,6 @@ topics = []
 variable_names = ["Irradiancia", "Temperatura ambiente", "Voltaje panel", "Corriente panel", "Potencia panel", "Angulo elevacion", "Angulo acimutal", "Voltaje motores", "Corriente motores", "Potencia motores"]
 to_send_values = {}
 
-# Configura los parámetros
 BROKER = "172.24.100.204"
 port = 8081
 
@@ -51,7 +50,6 @@ def assign_variables():
     
 
 def send_variables(client):
-    #MIRAR SI SE PUEDE HACER MAS REALISTA MIRANDO LA HORA DEL DIA PARA ESTIMAR LAS VARIABLES.
     while True:
         random.shuffle(topics)
         print("The first topic in the list is " + topics[0])
@@ -59,7 +57,7 @@ def send_variables(client):
             assign_variables()
             client.publish(topic, json.dumps(to_send_values, cls=JSONEncoder))
         print("New variables sent")
-        time.sleep(60)      #POSIBLE PUNTO DE ESTANCAMIENTO!!!!!!!!!!!!!!!!
+        time.sleep(60)
 
 def main():
     mqtt_client = connect_mqtt(
@@ -74,6 +72,3 @@ def main():
 
 
 main()
-
-# Publica el mensaje
-#publish.single(topic, message, hostname=broker_address, auth={'username': username, 'password': password})
